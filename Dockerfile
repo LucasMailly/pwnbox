@@ -1,0 +1,42 @@
+FROM ubuntu:latest
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    gdb-multiarch \
+    git \
+    liblzma-dev \
+    libssl-dev \
+    python3 \
+    python3-pip \
+    pkg-config \
+    ruby \
+    unzip \
+    wget \
+    && rm -rf /var/lib/apt/lists/*
+
+# Rust and Cargo
+RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+# # latest release of Ghidra from GitHub
+# RUN wget https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_11.0.2_build/ghidra_11.0.2_PUBLIC_20240326.zip -O ghidra.zip
+# RUN unzip ghidra.zip
+# RUN rm ghidra.zip
+
+# pwntools
+RUN pip3 install pwntools
+
+# pwninit
+RUN cargo install pwninit
+
+# gdb-gef
+RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
+
+# one-gadget
+RUN gem install one_gadget
+
+WORKDIR /root
+
+EXPOSE 22
+
+CMD ["/bin/bash"]
