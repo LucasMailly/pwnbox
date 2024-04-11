@@ -18,7 +18,7 @@ alias pwnbox='docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt 
 
 Execute the following command in PowerShell to create an alias for the container.
 ```powershell
-Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/LucasMailly/pwnbox/main/install.ps1')
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString("https://raw.githubusercontent.com/LucasMailly/pwnbox/main/install.ps1?$(Get-Random)")
 ```
 Or you run the `install.ps1` script manually.
 ```powershell
