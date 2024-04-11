@@ -4,21 +4,9 @@ if (Test-Path $dest) {
 }
 New-Item -ItemType Directory -Path $dest | Out-Null
 
-# $githubRepo = "https://raw.githubusercontent.com/LucasMailly/pwnbox/main/"
-# $files = @("Dockerfile", "pwnbox.bat")
-# foreach ($file in $files) {
-#     try {
-#         Invoke-WebRequest -Uri ($githubRepo + $file) -OutFile ($dest + "\" + $file)
-#     }
-#     catch {
-#         Write-Host "An error occured while downloading $file" -ForegroundColor Red
-#         exit 1
-#     }
-# }
-
 @"
 @echo off
-docker run -it --rm -v %cd%:/root --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
+docker run -it --rm -v %cd%:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
 "@ | Out-File -FilePath "$dest\pwnbox.bat" -Encoding ascii
 
 if (-not ($env:Path -like "*$dest*")) {

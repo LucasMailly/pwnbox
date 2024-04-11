@@ -5,29 +5,22 @@ A Docker container equipped with essential tools for binary exploitation and rev
 # Prerequisites
 You need to have [Docker](https://docs.docker.com/get-docker/) installed on your machine to run the container.
 
-# Build
-
-```bash
-docker build -t pwnbox .
-```
-
 # Installation
-
-You can pull the image from Docker Hub.
-```bash
-docker pull lmailly/pwnbox:latest
-```
 
 ### Linux
 
 You can add an alias to your `.bashrc` or `.zshrc` file to make it easier to run the container.
 ```bash
-alias pwnbox='docker run -it --rm -v .:/root --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest'
+alias pwnbox='docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest'
 ```
 
 ### Windows
 
-You can run the `install.ps1` script to create an alias for the container.
+Execute the following command in PowerShell to create an alias for the container.
+```powershell
+Invoke-Expression (New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/LucasMailly/pwnbox/main/install.ps1')
+```
+Or you run the `install.ps1` script manually.
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\install.ps1
 ```
@@ -37,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 You can run the container with the following command. All the files in the current directory will be mounted to the `/root` directory in the container.
 
 ```bash
-docker run -it --rm -v .:/root --cap-add=SYS_PTRACE --security-opt seccomp=unconfined pwnbox
+docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
 
 # or with the alias
 pwnbox

@@ -47,7 +47,7 @@ RUN echo 'function pwncheck() {\n\
     fi\n\
 }' >> /etc/bash.bashrc 
 
-WORKDIR /root
+WORKDIR /pwn
 
 EXPOSE 22
 
