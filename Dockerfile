@@ -35,6 +35,18 @@ RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 # one-gadget
 RUN gem install one_gadget
 
+# add function pwncheck
+RUN echo 'function pwncheck() {\n\
+    file "$1"\n\
+    checksec "$1"\n\
+    if [ $# -eq 2 ]\n\
+            then\n\
+                binary-security-check "$1" -l "$2"\n\
+        else\n\
+            binary-security-check "$1"\n\
+    fi\n\
+}' >> /etc/bash.bashrc 
+
 WORKDIR /root
 
 EXPOSE 22

@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  pwntoolbox:
+    image: pwntoolbox
+    container_name: pwntoolbox
+    volumes:
+      - ./data:/root
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - seccomp=unconfined
+    tty: true
+    stdin_open: true
