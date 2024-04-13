@@ -11,7 +11,7 @@ You need to have [Docker](https://docs.docker.com/get-docker/) installed on your
 
 You can add an alias to your `.bashrc` or `.zshrc` file to make it easier to run the container.
 ```bash
-alias pwnbox='docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest'
+alias pwnbox='docker pull lmailly/pwnbox:latest && docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest'
 ```
 
 ### Windows
