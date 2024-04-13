@@ -2,6 +2,7 @@ FROM ubuntu:latest
 
 RUN apt-get update && apt-get install -y \
     curl \
+    file \
     gdb-multiarch \
     git \
     liblzma-dev \
