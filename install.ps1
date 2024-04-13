@@ -6,7 +6,7 @@ New-Item -ItemType Directory -Path $dest | Out-Null
 
 @"
 @echo off
-docker run -it --rm -v %cd%:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
+docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
 "@ | Out-File -FilePath "$dest\pwnbox.bat" -Encoding ascii
 
 if (-not ($env:Path -like "*$dest*")) {
