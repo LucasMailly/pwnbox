@@ -1,5 +1,7 @@
 FROM ubuntu:latest
 
+RUN dpkg --add-architecture i386
+
 RUN apt-get update && apt-get install -y \
     curl \
     file \
@@ -7,6 +9,9 @@ RUN apt-get update && apt-get install -y \
     git \
     liblzma-dev \
     libssl-dev \
+    libc6:i386 \
+    libncurses5:i386 \
+    libstdc++6:i386 \
     python3 \
     python3-pip \
     pkg-config \
