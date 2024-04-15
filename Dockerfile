@@ -35,6 +35,9 @@ RUN pip3 install pwntools
 # pwninit
 RUN cargo install pwninit
 
+# binary-security-check
+RUN cargo install binary-security-check
+
 # gdb-gef
 RUN bash -c "$(curl -fsSL https://gef.blah.cat/sh)"
 
