@@ -27,7 +27,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 
 # Usage
 
-You can run the container with the following command. All the files in the current directory will be mounted to the `/root` directory in the container.
+You can run the container with the following command. All the files in the current directory will be mounted to the `/pwn` directory in the container.
 
 ```bash
 docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
