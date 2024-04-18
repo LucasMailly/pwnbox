@@ -11,7 +11,7 @@ You need to have [Docker](https://docs.docker.com/get-docker/) installed on your
 
 You can add an alias to your `.bashrc` or `.zshrc` file to make it easier to run the container.
 ```bash
-alias pwnbox='docker pull lmailly/pwnbox:latest && docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest'
+alias pwnbox='docker pull lmailly/pwnbox:latest && docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --name pwnbox lmailly/pwnbox:latest'
 ```
 
 ### Windows
@@ -30,7 +30,7 @@ powershell -ExecutionPolicy Bypass -File .\install.ps1
 You can run the container with the following command. All the files in the current directory will be mounted to the `/pwn` directory in the container.
 
 ```bash
-docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined lmailly/pwnbox:latest
+docker run -it --rm -v .:/pwn --cap-add=SYS_PTRACE --security-opt seccomp=unconfined --name pwnbox lmailly/pwnbox:latest
 
 # or with the alias
 pwnbox
