@@ -16,6 +16,7 @@ RUN apt-get update && apt-get install -y \
     python3-pip \
     pkg-config \
     ruby \
+    tmux \
     unzip \
     wget \
     && rm -rf /var/lib/apt/lists/*
@@ -55,6 +56,12 @@ RUN echo 'function pwncheck() {\n\
             binary-security-check "$1"\n\
     fi\n\
 }' >> /etc/bash.bashrc 
+
+# configure tmux
+RUN echo 'if [ "$TERM" != "screen" ]; then exec tmux; fi' >> /etc/bash.bashrc
+RUN echo 'set -g mouse on\n\
+set-option -g history-limit 10000\n\
+set-option -g aggressive-resize on' >> /etc/tmux.conf
 
 WORKDIR /pwn
 
