@@ -35,6 +35,8 @@ RUN pip3 install pwntools
 
 # pwninit
 RUN cargo install pwninit
+COPY src/pwninit-template.py /etc/pwninit-template.py
+RUN echo 'alias pwninit="pwninit --template-path /etc/pwninit-template.py"' >> /etc/bash.bashrc
 
 # binary-security-check
 RUN cargo install binary-security-check
